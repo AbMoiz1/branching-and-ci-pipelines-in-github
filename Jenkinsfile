@@ -19,7 +19,7 @@ pipeline {
 
         stage('Lint') {
             steps {
-                sh './venv/bin/python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
+                sh './venv/bin/python -m flake8 . --exclude=venv --count --select=E9,F63,F7,F82 --show-source --statistics'
             }
         }
 
