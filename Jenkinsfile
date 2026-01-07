@@ -10,21 +10,21 @@ pipeline {
 
         stage('Setup Python') {
             steps {
-                bat 'python --version'
-                bat 'python -m pip install --upgrade pip'
-                bat 'pip install -r requirements.txt'
+                sh 'python3 --version'
+                sh 'python3 -m pip install --upgrade pip'
+                sh 'pip3 install -r requirements.txt'
             }
         }
 
         stage('Lint') {
             steps {
-                bat 'python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
+                sh 'python3 -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'python -m pytest test_app.py -v'
+                sh 'python3 -m pytest test_app.py -v'
             }
         }
     }
